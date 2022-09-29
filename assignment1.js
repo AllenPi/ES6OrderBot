@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require("body-parser");
-const ShwarmaOrder = require("./assignment1Shwarma");
+const NoodleOrder = require("./assignment1Noodle");
 
 // Create a new express application instance
 const app = express();
@@ -16,7 +16,7 @@ let oOrders = {};
 app.post("/sms", (req, res) =>{
     let sFrom = req.body.From || req.body.from;
     if(!oOrders.hasOwnProperty(sFrom)){
-        oOrders[sFrom] = new ShwarmaOrder();
+        oOrders[sFrom] = new NoodleOrder();
     }
     let sMessage = req.body.Body|| req.body.body;
     let aReply = oOrders[sFrom].handleInput(sMessage);
